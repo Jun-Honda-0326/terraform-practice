@@ -16,9 +16,9 @@ resource "aws_internet_gateway" "web-site-igw" {
 
 # パブリックサブネット1a
 resource "aws_subnet" "web-site-public_1a" {
-  vpc_id = aws_vpc.web-site-vpc.id
+  vpc_id            = aws_vpc.web-site-vpc.id
   availability_zone = "ap-northeast-1a"
-  cidr_block = "10.0.0.0/24"
+  cidr_block        = "10.0.0.0/24"
   tags = {
     Name = "web-site-public_1a"
   }
@@ -26,9 +26,9 @@ resource "aws_subnet" "web-site-public_1a" {
 
 # パブリックサブネット1c
 resource "aws_subnet" "web-site-public_1c" {
-  vpc_id = aws_vpc.web-site-vpc.id
+  vpc_id            = aws_vpc.web-site-vpc.id
   availability_zone = "ap-northeast-1c"
-  cidr_block = "10.0.1.0/24"
+  cidr_block        = "10.0.1.0/24"
   tags = {
     Name = "web-site-public_1c"
   }
@@ -36,9 +36,9 @@ resource "aws_subnet" "web-site-public_1c" {
 
 # プライベートサブネット1a
 resource "aws_subnet" "web-site-private_1a" {
-  vpc_id = aws_vpc.web-site-vpc.id
+  vpc_id            = aws_vpc.web-site-vpc.id
   availability_zone = "ap-northeast-1a"
-  cidr_block = "10.0.2.0/24"
+  cidr_block        = "10.0.2.0/24"
   tags = {
     Name = "web-site-private _1a"
   }
@@ -46,9 +46,9 @@ resource "aws_subnet" "web-site-private_1a" {
 
 # プライベートサブネット1c
 resource "aws_subnet" "web-site-private_1c" {
-  vpc_id = aws_vpc.web-site-vpc.id
+  vpc_id            = aws_vpc.web-site-vpc.id
   availability_zone = "ap-northeast-1c"
-  cidr_block = "10.0.3.0/24"
+  cidr_block        = "10.0.3.0/24"
   tags = {
     Name = "web-site-private _1c"
   }
@@ -64,9 +64,9 @@ resource "aws_route_table" "public-rtb" {
 
 # ルーティング
 resource "aws_route" "public-rtb-igw" {
-  route_table_id = aws_route_table.public-rtb.id
+  route_table_id         = aws_route_table.public-rtb.id
   destination_cidr_block = "0.0.0.0/0"
-  gateway_id = aws_internet_gateway.web-site-igw.id
+  gateway_id             = aws_internet_gateway.web-site-igw.id
 }
 
 # サブネットの関連付け
