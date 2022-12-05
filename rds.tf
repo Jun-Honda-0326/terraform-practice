@@ -38,7 +38,7 @@
 
 # resource "aws_db_instance" "web-rds" {
 #   allocated_storage           = 20                                                //ストレージ
-#   db_name                     = "webrds"                                         //DB名
+#   db_name                     = "webrds"                                          //DB名
 #   engine                      = "mysql"                                           //DBエンジン
 #   engine_version              = "8.0"                                             //DBバージョン
 #   instance_class              = "db.t2.micro"                                     //DB インスタンスクラス
@@ -49,11 +49,11 @@
 #   username                    = "root"                                            // ユーザー名
 #   password                    = var.rds_password                                  // パスワード
 #   parameter_group_name        = aws_db_parameter_group.mysql-parameter-group.name //パラメータグループ
-#   option_group_name           = aws_db_option_group.mysql_option_group.name
-#   skip_final_snapshot         = true
-#   identifier                  = "web-rds"                          //識別子
-#   port                        = 3306                               // 開放ポート番号
-#   vpc_security_group_ids      = [aws_security_group.web-rds-sg.id] // セキュリティグループ
-#   db_subnet_group_name        = aws_db_subnet_group.db-subnet.name // DBサブネットグループ
-#   publicly_accessible         = false                              // インターネットアクセス有効・非有効
+#   option_group_name           = aws_db_option_group.mysql_option_group.name       // オプショングループ
+#   skip_final_snapshot         = true                                              // 終了時スナップショットを取得をスキップ
+#   identifier                  = "web-rds"                                         //識別子
+#   port                        = 3306                                              // 開放ポート番号
+#   vpc_security_group_ids      = [aws_security_group.web-rds-sg.id]                // セキュリティグループ
+#   db_subnet_group_name        = aws_db_subnet_group.db-subnet.name                // DBサブネットグループ
+#   publicly_accessible         = false                                             // インターネットアクセス有効・非有効
 # }
