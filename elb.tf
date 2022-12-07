@@ -25,3 +25,24 @@ resource "aws_lb_target_group_attachment" "web-alb-tg-attachment-c" {
   target_id        = aws_instance.web-ec2-1c.id
   port             = 80
 }
+# ALB 本体
+resource "aws_lb" "web-alb" {
+  name               = "web-alb"
+  internal           = false
+  load_balancer_type = "application"
+  security_groups    = [aws_security_group.web-alb-sg.id]
+  subnets            = [aws_subnet.web-site-public_1a.id, aws_subnet.web-site-public_1c.id]
+}
+
+# リスナールール
+resource "aws_lb_listener" "web-alb-listener" {
+  load_balancer_arn = aws_lb.web-alb.arn
+  port              = "80"
+  protocol          = "HTTP"
+
+  default_action {
+    type             = "forward"
+    target_group_arn = aws_lb_target_group.web-alb-tg.arn
+  }
+
+}
