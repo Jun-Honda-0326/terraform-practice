@@ -45,7 +45,7 @@ resource "aws_instance" "web-ec2-1a" {
 # AMIの作成
 resource "aws_ami_from_instance" "web-ec2-ami" {
   name               = "web-ec2-ami"
-  source_instance_id = "i-0da9206172bab032a"
+  source_instance_id = "i-09aafdde3fbdacec5"
   tags = {
     "Name" = "web-ec2-ami"
   }
